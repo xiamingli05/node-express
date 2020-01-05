@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>首页</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<%- include('bar', {username}) %>
+
+
+<div class="list">
+
+    <% for(var i=0; i<list.length; i++) { %>
+      <div class="row">
+          <span><%= (i+1) %></span>
+          <span><%= list[i].author %></span>
+          <span><a href="/detail?id=<%=list[i]._id%>"><%= list[i].title %></a></span>
+          <span><%= list[i].time2 %></span>
+          <span>
+              <a href="/write?id=<%=list[i]._id%>">编辑</a>
+              <a href="/articles/delete?id=<%=list[i]._id%>">删除</a>
+          </span>
+      </div>
+    <% } %>
+
+    <div class="pages">
+        <% for (var i=0; i<total; i++) { %>
+          <a href="/?page=<%=(i+1)%>"><%= (i+1) %></a>
+        <% } %>
+    </div>
+</div>
+
+
+</body>
+</html>
